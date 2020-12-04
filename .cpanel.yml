@@ -1,0 +1,40 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/oiwb57pb88ya/public_html/social/social
+    - /bin/cp -R config/ $DEPLOYPATH
+    - /bin/cp -R core/ $DEPLOYPATH
+    - /bin/cp -R modules/ $DEPLOYPATH
+    - /bin/cp -R profiles/ $DEPLOYPATH
+    - /bin/cp -R sites/ $DEPLOYPATH
+    - /bin/cp -R src/ $DEPLOYPATH
+    - /bin/cp -R tests/ $DEPLOYPATH
+    - /bin/cp -R themes/ $DEPLOYPATH
+    - /bin/cp -R translations/ $DEPLOYPATH
+    - /bin/cp -R vendor/ $DEPLOYPATH
+    - /bin/cp .htaccess $DEPLOYPATH
+    - /bin/cp composer.json $DEPLOYPATH
+    - /bin/cp composer.lock $DEPLOYPATH
+    - /bin/cp composer.phar $DEPLOYPATH
+    - /bin/cp autoload.php $DEPLOYPATH
+    - /bin/cp build-social.make $DEPLOYPATH
+    - /bin/cp update.php $DEPLOYPATH
+    - /bin/cp .browserslistrc $DEPLOYPATH
+    - /bin/cp .csslintrc $DEPLOYPATH
+    - /bin/cp .editorconfig $DEPLOYPATH
+    - /bin/cp .eslintignore $DEPLOYPATH
+    - /bin/cp .eslintrc.json $DEPLOYPATH
+    - /bin/cp .ht.router.php $DEPLOYPATH
+    - /bin/cp build-social.make $DEPLOYPATH
+    - /bin/cp drupal-org.make $DEPLOYPATH
+    - /bin/cp drupal-org-core.make $DEPLOYPATH
+    - /bin/cp index.php $DEPLOYPATH
+    - /bin/cp INSTALL.txt $DEPLOYPATH
+    - /bin/cp LICENSE.txt $DEPLOYPATH
+    - /bin/cp phpunit.xml.dist $DEPLOYPATH
+    - /bin/cp README.txt $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/cp social.install $DEPLOYPATH
+    - /bin/cp social.profile $DEPLOYPATH
+    - /bin/cp translations.php $DEPLOYPATH
+    - /bin/cp web.config $DEPLOYPATH
