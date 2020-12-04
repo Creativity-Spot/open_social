@@ -1,0 +1,63 @@
+// Import breakpoint
+@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+
+// Import variables, abstractions, base styles and components using globbing.
+//
+// Globbing will always import files alphabetically. Optimally, all your
+// components should be self-contained and explicit enough to not have any
+// contained styles leak into unrelated components: The import order should not
+// affect the result.
+//
+// If there are variables, functions or mixins that depend on each other and
+// therefore need to be imported in a specific order you can import them
+// directly. Variables-, function- or mixin providing partials should never
+// output any styles themselves: Importing them multiple times to resolve
+// dependencies shouldn't be a problem.
+
+@import "_vars";
+
+@import "defaults";
+@import "body";
+@import "color-overrides";
+@import "regions";
+@import "layers";
+@import "title";
+@import "user";
+@import "breadcrumbs";
+@import "claro_improvements";
+@import "entity_reference_layout";
+@import "layout_node_form";
+@import "paragraphs";
+@import "paragraphs_ee";
+@import "tabs";
+@import "views";
+@import "media-library";
+@import "table";
+@import "tabledrag";
+@import "ckeditor";
+@import "form";
+@import "button";
+@import "dropbutton";
+@import "action-link";
+@import "chosen";
+@import "pager";
+@import "help";
+@import "system-report";
+@import "messages";
+@import "field-ui";
+@import "card";
+@import "elements";
+@import "admin-item";
+@import "focus";
+@import "system-modules";
+@import "dialog";
+@import "throbber";
+@import "update";
+@import "ief";
+@import "status-report";
+@import "divider";
+@import "progress";
+@import "upgrade-status";
+@import "insert";
+@import "system-themes";
+@import "panel";

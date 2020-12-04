@@ -1,0 +1,40 @@
+gin:
+  css:
+    theme:
+      dist/css/gin.css: {}
+
+gin_media_library:
+  js:
+    dist/js/gin_media_library.view.js: {}
+
+gin_toolbar:
+  css:
+    theme:
+      dist/css/gin_toolbar.css: {}
+  js:
+    dist/js/gin_toolbar.js: {}
+
+gin_classic_toolbar:
+  css:
+    theme:
+      dist/css/gin_classic_toolbar.css: {}
+  js:
+    dist/js/gin_toolbar.js: {}
+
+gin_horizontal_toolbar:
+  css:
+    theme:
+      dist/css/gin_horizontal_toolbar.css: {}
+  js:
+    dist/js/gin_toolbar.js: {}
+
+gin_accent:
+  css:
+    theme:
+      dist/css/gin_accent.css: {}
+  js:
+    dist/js/gin_accent.js: {}
+
+gin_settings:
+  js:
+    dist/js/gin_settings.js: {}

@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the data_policy module.
+ */
+
+use Drupal\data_policy\Entity\DataPolicy;
+
+/**
+ * Implements hook_install().
+ */
+function data_policy_install() {
+  // Hide a message about a new version of data policy for the anonymous user.
+  user_role_grant_permissions('anonymous', ['without consent']);
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function data_policy_uninstall() {
+  /** @var \Drupal\data_policy\Entity\DataPolicyInterface $data_policy */
+  foreach (DataPolicy::loadMultiple() as $data_policy) {
+    $data_policy->delete();
+  }
+
+  \Drupal::configFactory()->getEditable('data_policy.data_policy')->delete();
+}
+
+/**
+ * Display Name field on the edit form.
+ */
+function data_policy_update_8001() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.data_policy.data_policy.default');
+  $data = $config->getRawData();
+  $data['content']['name'] = [
+    'type' => 'string_textfield',
+    'weight' => -1,
+    'settings' => [
+      'size' => 60,
+      'placeholder' => ''
+    ],
+    'third_party_settings' => [],
+    'region' => 'content'
+
+  ];
+  $config->setData($data);
+  $config->save(TRUE);
+}

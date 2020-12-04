@@ -1,0 +1,88 @@
+@import "_vars";
+
+:root {
+  // Accent color: use Claro defaults for Gin
+  --colorGinPrimary: #{$ginPrimary};
+  --colorGinPrimaryHover: #{$ginPrimaryHover};
+  --colorGinPrimaryActive: #{$ginPrimaryActive};
+  --colorGinPrimaryLight: #{mix(white, $mixColor, 85%)}; //#{rgba($ginPrimary, .15)};
+  --colorGinPrimaryLightHover: #{mix(white, $mixColor, 75%)}; //#{rgba($ginPrimary, .25)};
+  --colorGinPrimaryLightActive: #{mix(white, $mixColor, 65%)}; //#{rgba($ginPrimary, .35)};
+  --colorGinItemHover: #{rgba($ginPrimary, .06)};
+  --colorGinButtonShadow: #00000033;
+  --colorGinButtonText: #fff;
+  --colorGinFocus: #059fad; //#00a590; //#0ba77d; //#2297c7;
+
+  --colorGinDisabled: #bbb;
+  --colorGinWarning: #d8b234;
+  --colorGinWarningLight: #efcf64;
+  --colorGinWarningBackground: #{mix(black, #efcf64, 60%)};
+  --colorGinDanger: #cc3d3d;
+  --colorGinDangerLight: #f39b9d;
+  --colorGinDangerBackground: #{mix(black, #dc7f7f, 60%)};
+  --colorGinGreen: #058260;
+  --colorGinGreenLight: #32cea4;
+  --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
+
+  --colorGinAppBackground: #{$colorAppBackground};
+  --colorGinLayerBackground: #fff;
+  --colorGinLayer2Background: #edeff5;
+  --colorGinLayer3Background: #fff;
+  --colorGinLayer4Background: #e3e3e8;
+  --colorGinBorder: #d4d4d8;
+  --colorGinLayerBorder: rgba(0, 0, 0, .08);
+  --colorGinLayer2Border: #d4d4d8;
+  --colorGinTableBorder: rgba(0, 0, 0, .15);
+
+  --colorGinTitle:#222330;
+  --colorGinText: #222330;
+  --colorGinTextLight: #545560;
+
+  --colorGinTableHeader: var(--colorGinLayer4Background);
+  --colorGinSwitch: #00a590;
+  --colorGinSwitchShadow: rgba(38, 167, 105, .3);
+
+  --colorGinIcons: #6e6d7a;
+}
+
+.gin--dark-mode {
+  $ginPrimary: #90aeef;
+  --colorGinPrimary: #{$ginPrimary};
+  --colorGinPrimaryHover: #{lighten(#799eef, 5)};
+  --colorGinPrimaryActive: #{lighten(#799eef, 10)};
+  --colorGinPrimaryLight: #{rgba($ginPrimary, .20)};
+  --colorGinPrimaryLightHover: #{rgba($ginPrimary, .30)};
+  --colorGinPrimaryLightActive: #{rgba($ginPrimary, .40)};
+  --colorGinItemHover: #{rgba($ginPrimary, .10)};
+  --colorGinButtonShadow: rgba(#111, .9);
+  --colorGinButtonText: #111;
+  --colorGinFocus: var(--colorGinPrimary); //#19a6b3; //#0ac3ac; //#96eab2; //#5dc0cf; //#32cea4; //#59caf9;
+
+  --colorGinDisabled: #999;
+  --colorGinWarning: #dec15f;
+  // --colorGinWarningBackground: #{mix(black, #dec15f, 60%)};
+  --colorGinDanger: #ce6060;
+  // --colorGinDangerBackground: #{mix(black, #ce6060, 60%)};
+  --colorGinGreen: #32cea4;
+  // --colorGinGreenBackground: #{mix(black, #32cea4, 60%)};
+
+  --colorGinAppBackground: #{$colorDarkAppBackground};
+  --colorGinLayerBackground: #2A2A2D;
+  --colorGinLayer2Background: #3B3B3F;
+  --colorGinLayer3Background: #47474c;
+  --colorGinLayer4Background: #19191b;
+  --colorGinBorder: #43454a;
+  --colorGinLayerBorder: rgba(0, 0, 0, .05);
+  --colorGinLayer2Border: #76777B;
+  --colorGinTableBorder: #43454a;
+
+  --colorGinTitle: #fff;
+  --colorGinText: #ccc;
+  --colorGinTextLight: #9e9fa0;
+
+  --colorGinTableHeader: var(--colorGinAppBackground);
+  --colorGinSwitch: var(--colorGinPrimary);
+  --colorGinSwitchShadow: var(--colorGinPrimaryLight);
+
+  --colorGinIcons: #888;
+}

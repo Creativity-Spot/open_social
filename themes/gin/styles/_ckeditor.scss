@@ -1,0 +1,119 @@
+.cke {
+  .cke_inner,
+  .cke_wysiwyg_frame,
+  .cke_wysiwyg_div {
+    .gin--dark-mode & {
+      background: var(--colorGinLayer2Background);
+    }
+  }
+
+  &.cke_chrome {
+    border-radius: 4px;
+  }
+
+  .cke_inner {
+    border-radius: 4px;
+  }
+
+  .cke_top {
+    background: var(--colorGinAppBackground);
+    border-radius: 3px 3px 0 0;
+  }
+
+  .cke_bottom {
+    background: var(--colorGinLayer3Background);
+    border-radius: 0 0 3px 3px;
+  }
+
+  .cke_path_empty:only-child::after {
+    background: transparent;
+  }
+
+  .cke_combo {
+    &::after {
+      border-right: 1px solid var(--colorGinBorder);
+    }
+  }
+
+  .cke_combo_text {
+    color: var(--colorGinText);
+  }
+
+  .cke_combo_on a.cke_combo_button,
+  .cke_combo_off a.cke_combo_button:hover,
+  .cke_combo_off a.cke_combo_button:focus,
+  .cke_combo_off a.cke_combo_button:active {
+    background: var(--colorGinAppBackground);
+    border: 1px solid var(--colorGinLayer2Background);
+  }
+
+  a.cke_path_item,
+  span.cke_path_empty {
+    color: var(--colorGinTextLight);
+  }
+
+  a.cke_button {
+    border-radius: 3px;
+  }
+
+  a.cke_button_on {
+    background: none;
+  }
+
+  a.cke_button_off {
+    &:hover,
+    &:focus,
+    &:active {
+      background: var(--colorGinPrimaryLight);
+      border: 1px solid var(--colorGinLayer2Border);
+    }
+  }
+
+  .cke_button {
+    span {
+      .gin--dark-mode & {
+        filter: invert(1);
+      }
+    }
+  }
+
+  &.cke_panel {
+    background-color: var(--colorGinAppBackground);
+    border: 0 none;
+  }
+}
+
+.cke.cke_chrome.cke_focus {
+  border-color: transparent;
+}
+
+.cke.cke_chrome:hover, .cke:hover .cke_contents, .cke:hover .cke_top, .cke:hover .cke_bottom {
+  border-color: var(--colorGinText);
+
+  .gin--dark-mode & {
+    border-color: var(--colorGinLayer2Border);
+  }
+}
+
+.cke.cke_chrome.cke_focus:hover,
+.cke.cke_focus .cke_contents,
+.cke.cke_focus .cke_top,
+.cke.cke_focus .cke_bottom,
+.error + .cke.cke_chrome.cke_focus:hover,
+.error + .cke.cke_focus .cke_contents,
+.error + .cke.cke_focus .cke_top,
+.error + .cke.cke_focus .cke_bottom {
+  border-color: var(--colorGinText);
+}
+
+.cke_top,
+.cke.cke_chrome.cke_focus:hover .cke_top,
+.cke.cke_focus .cke_top,
+.error + .cke.cke_focus .cke_top,
+.error + .cke.cke_chrome.cke_focus:hover .cke_top {
+  border-bottom: 1px solid var(--colorGinBorder);
+}
+
+.cke textarea.cke_source {
+  background-color: transparent;
+}

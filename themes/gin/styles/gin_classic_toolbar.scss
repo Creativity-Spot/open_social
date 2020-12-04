@@ -1,0 +1,165 @@
+// Import breakpoint
+@import "node_modules/breakpoint-sass/stylesheets/breakpoint";
+
+@import "_vars";
+@import "coffee";
+@import "toolbar";
+
+// Toolbar
+.toolbar {
+  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+  .toolbar-bar {
+    $breakpoint: 576px;
+    background: #100f10;
+    box-shadow: none;
+  }
+}
+
+.toolbar .toolbar-menu,
+.toolbar-horizontal .toolbar-tray .menu-item--expanded,
+.toolbar .toolbar-tray {
+  background-color: var(--colorGinLayerBackground);
+}
+
+.toolbar-horizontal .toolbar-tray .toolbar-toggle-orientation {
+  border-left: 1px solid var(--colorGinBorder);
+}
+
+.toolbar-tray-horizontal {
+  ul {
+    li {
+      &.menu-item {
+        .menu-item {
+          border-bottom: 1px solid var(--colorGinBorder);
+        }
+      }
+    }
+  }
+}
+
+.toolbar-tray a,
+.toolbar .toolbar-menu .toolbar-menu a {
+  color: var(--colorGinText);
+
+  &:hover {
+    color: var(--colorGinTitle);
+  }
+}
+
+.toolbar .toolbar-tray .menu-item--active-trail > .toolbar-box a,
+.toolbar .toolbar-tray .menu-item > .toolbar-icon.is-active,
+.toolbar .toolbar-tray .menu-item > .toolbar-box > .toolbar-icon.is-active,
+.toolbar .toolbar-tray a.is-active {
+  color: var(--colorGinPrimary);
+  font-weight: 500;
+
+  &:before {
+    background: var(--colorGinPrimary);
+  }
+}
+
+// Inline Edit toggle
+.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item,
+.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item.is-active,
+.toolbar-tab > .toolbar-icon.toolbar-icon-edit.toolbar-item:focus {
+  background: var(--colorGinPrimary);
+}
+
+.toolbar-tray-horizontal a:focus,
+.toolbar-box a:focus,
+.toolbar .toolbar-icon.toolbar-handle:focus {
+  background-color: var(--colorGinLayer2Background);
+}
+
+.toolbar-menu__trigger,
+.menu-item-title,
+.menu-item-sub-title {
+  display: none !important;
+}
+
+.toolbar .level-2 > ul,
+.gin--dark-mode .toolbar .toolbar-toggle-orientation {
+  background-color: var(--colorGinLayer2Background);
+}
+
+.toolbar .level-3 > ul {
+  background-color: var(--colorGinAppBackground);
+}
+
+.gin--classic-toolbar {
+  .page-wrapper__node-edit-form .layout-region-node-secondary {
+    padding-top: 39px;
+  }
+
+  table.sticky-header {
+    @include mq(1024px) {
+      margin-top: 0;
+    }
+  }
+}
+
+.toolbar-bar {
+  .toolbar-icon {
+    &.toolbar-icon-escape-admin,
+    &.toolbar-icon-edit,
+    &.toolbar-icon-local-tasks,
+    &.toolbar-icon-menu,
+    &.toolbar-icon-shortcut,
+    &.toolbar-icon-coffee,
+    &.toolbar-icon-devel,
+    &.toolbar-icon-user,
+    &#toolbar-item-administration-search {
+      &:hover:before,
+      &.is-active:before {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+// Home icon
+.toolbar .toolbar-bar .toolbar-icon-admin-toolbar-tools-help {
+  width: auto;
+  height: 100%;
+  text-indent: -999em;
+
+  &:before {
+    mask-size: 21px 21px;
+  }
+
+  @include mq(976px) {
+    &:before {
+      left: 16px;
+    }
+  }
+}
+
+#toolbar-item-administration-tray {
+  box-shadow: 0 0px 4px rgba(0,0,0,0.1);
+
+  .toolbar-logo {
+    img {
+      @include breakpoint(1024px) {
+        max-height: 21px;
+      }
+    }
+  }
+}
+
+.toolbar-tray-horizontal ul li.menu-item--expanded ul li.menu-item--expanded,
+.toolbar-tray-horizontal .toolbar-menu:not(:first-child) li.menu-item--expanded > a:focus {
+  position: relative;
+
+  &:before {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+.toolbar-tray-open.path-node .page-wrapper__node-edit-form .layout-region-node-secondary {
+  @include breakpoint(1024px) {
+    top: $topBar;
+    height: calc(100% - #{$topBar});
+  }
+}

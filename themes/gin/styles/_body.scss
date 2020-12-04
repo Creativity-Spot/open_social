@@ -1,0 +1,29 @@
+html {
+  font-family: Inter, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+body {
+  color: var(--colorGinText);
+  background: var(--colorGinAppBackground);
+}
+
+h1, h2, h3 {
+  letter-spacing: -.025em;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+::selection {
+  background: var(--colorGinPrimaryLightHover);
+}
+
+::-moz-selection {
+  background: var(--colorGinPrimaryLightHover);
+}
