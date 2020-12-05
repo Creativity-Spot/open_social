@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 PATCHES.txt
+modules/link_css/
+vendor/zoonman/linkedin-api-php-client/
