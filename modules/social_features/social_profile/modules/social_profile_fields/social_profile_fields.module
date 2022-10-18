@@ -6,11 +6,13 @@
  */
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Entity\ContentEntityFormInterface;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\profile\Entity\ProfileInterface;
 use Drupal\profile\Entity\ProfileType;
@@ -54,22 +56,66 @@ function social_profile_fields_entity_field_access($operation, FieldDefinitionIn
 function social_profile_fields_social_user_name_display_suggestions(AccountInterface $account) : array {
   $suggestions = [];
 
+  $entityTypeManager = \Drupal::entityTypeManager();
+
   /** @var \Drupal\profile\ProfileStorageInterface $storage */
-  $storage = \Drupal::entityTypeManager()->getStorage('profile');
+  $storage = $entityTypeManager->getStorage('profile');
 
   if (!$user_profile = $storage->loadByUser($account, 'profile', TRUE)) {
     return $suggestions;
   }
 
-  if (_social_profile_fields_get_setting('profile_profile_field_profile_nick_name') && !$user_profile->field_profile_nick_name->isEmpty()) {
-    // Add the nickname with a low weight so it's shown before the full name.
-    $suggestions['nickname'] = [
-      'weight' => -100,
-      'name' => $user_profile->field_profile_nick_name->value,
-    ];
+  if (_social_profile_fields_get_setting('profile_profile_field_profile_nick_name') && !$user_profile->get('field_profile_nick_name')->isEmpty()) {
+    /** @var \Drupal\profile\ProfileAccessControlHandler $accessControlHandler */
+    $accessControlHandler = $entityTypeManager->getAccessControlHandler('profile');
+
+    $nick_name_field = $user_profile->get('field_profile_nick_name');
+
+    $nick_name = $accessControlHandler->fieldAccess('view', $nick_name_field->getFieldDefinition(), NULL, $nick_name_field, FALSE)
+      ? $nick_name_field->getString()
+      : "";
+
+    if ($nick_name !== '') {
+      // Add the nickname with a low weight so it's shown before the full name.
+      $suggestions['nickname'] = [
+        'weight' => -100,
+        'name' => $nick_name,
+      ];
+    }
   }
 
   return $suggestions;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function social_profile_fields_form_profile_profile_edit_form_alter(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Entity\ContentEntityFormInterface $form_object */
+  $form_object = $form_state->getFormObject();
+  /** @var \Drupal\profile\Entity\ProfileInterface $form_entity */
+  $form_entity = $form_object->getEntity();
+
+  $user = \Drupal::currentUser();
+  $hide_revision_field = FALSE;
+
+  // Don't show revision field, if the user can't edit all profiles.
+  if (!$user->hasPermission('update any profile profile')) {
+    $hide_revision_field = TRUE;
+  }
+
+  // Don't show the revision field, if user is editing it's own profile.
+  if (
+    $form_object instanceof ContentEntityFormInterface &&
+    $form_entity->getEntityTypeId() === 'profile' &&
+    $user->id() == $form_entity->getOwnerId()
+  ) {
+    $hide_revision_field = TRUE;
+  }
+
+  if ($hide_revision_field) {
+    $form['revision_log_message']['#access'] = FALSE;
+  }
 }
 
 /**
